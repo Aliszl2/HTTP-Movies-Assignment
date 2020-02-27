@@ -4,9 +4,13 @@ const MovieForm = ({handleSubmit, onInputChange, movie})=> {
 console.log(movie)
   return (
     <div className="New-movie-form">
-         <form className="form" onSubmit={e => handleSubmit(e)}>
+         <form className="form" 
+         onSubmit={e => {
+           handleSubmit(e);
+           
+           }}>
         <label>
-          <h1>Update</h1>
+          
           title:
           <input
             type="text"

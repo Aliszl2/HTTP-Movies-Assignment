@@ -80,8 +80,8 @@ app.put("/api/movies/:id", (req, res) => {
     req.body.id === undefined ||
     !req.body.title ||
     !req.body.director ||
-    !req.body.metascore ||
-    !req.body.stars
+    !req.body.metascore 
+    // !req.body.stars
   ) {
     res
       .status(422)
