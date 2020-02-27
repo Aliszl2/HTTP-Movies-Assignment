@@ -80,8 +80,8 @@ app.put("/api/movies/:id", (req, res) => {
     req.body.id === undefined ||
     !req.body.title ||
     !req.body.director ||
-    !req.body.metascore ||
-    !req.body.stars
+    !req.body.metascore 
+    // !req.body.stars
   ) {
     res
       .status(422)
@@ -107,6 +107,6 @@ app.get("/", function(req, res) {
   res.send("App is working 👍");
 });
 
-app.listen(5000, () => {
-  console.log("Server listening on port 5000");
+app.listen(9000, () => {
+  console.log("Server listening on port 9000");
 });

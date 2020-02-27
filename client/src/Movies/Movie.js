@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useRouteMatch } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
-function Movie({ addToSavedList }) {
+function Movie({ addToSavedList, setCurrentMovieId, setEditing, editing }) {
+
   const [movie, setMovie] = useState(null);
   const match = useRouteMatch();
 
   const fetchMovie = id => {
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://localhost:9000/api/movies/${id}`)
       .then(res => setMovie(res.data))
       .catch(err => console.log(err.response));
   };
@@ -26,6 +27,12 @@ function Movie({ addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
 
+  const editingMovie = (evt)=>{
+    console.log("editing",movie.id, editing)
+    setCurrentMovieId(movie.id);
+    setEditing(true)
+  }
+
   return (
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
@@ -33,6 +40,9 @@ function Movie({ addToSavedList }) {
       <div className='save-button' onClick={saveMovie}>
         Save
       </div>
+      <button
+      onClick={evt => editingMovie()}
+      >Edit</button>
     </div>
   );
 }
